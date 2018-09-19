@@ -1,5 +1,10 @@
 <?php
 	$langID=$_POST["lang"];
+	    error_reporting(0);
+	if($_FILES["file"]["name"]!="")
+	{
+		include "compilers/make.php";
+	}
 	switch($langID)
 	{
 			case 1:
