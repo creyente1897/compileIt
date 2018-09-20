@@ -18,11 +18,9 @@
 	fclose($file_input);
 	exec("chmod 777 $executable"); 
 	exec("chmod 777 $error_file");	
-
 	shell_exec($cmd_error);
 	$error=file_get_contents($error_file);
 	$startTime = microtime(true);
-
 	if(trim($error)=="")
 	{
 		if(trim($input)=="")
@@ -35,7 +33,6 @@
 			$output=shell_exec($out);
 		}
 		echo "<pre>$output</pre>";
-        //echo "<textarea id='div' class=\"form-control\" name=\"output\" rows=\"10\" cols=\"50\">$output</textarea><br><br>";
 	}
 	else if(!strpos($error,"error"))
 	{
@@ -50,7 +47,6 @@
 			$output=shell_exec($out);
 		}
 		echo "<pre>$output</pre>";
-               // echo "<textarea id='div' class=\"form-control\" name=\"output\" rows=\"10\" cols=\"50\">$output</textarea><br><br>";
 	}
 	else
 	{
