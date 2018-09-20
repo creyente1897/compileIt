@@ -4,19 +4,21 @@ $input=$_POST["input"];
 $code_file="main.c";
 $input_file="input.txt";
 $error_file="error.txt";
-$gcc="gcc";
+$gpp="g++";
 $out="timeout 5s ./a.out";
 $executable="a.out";
-$cmd=$gcc." -lm ".$code_file;	
+$cmd=$gpp." -lm ".$code_file;	
 $cmd_error=$cmd." 2>".$error_file;
-$check=0;
+$flag=0;
 $file_code=fopen($code_file,"w+");
 fwrite($file_code,$code);
 fclose($file_code);
 $file_input=fopen($input_file,"w+");
 fwrite($file_input,$input);
 fclose($file_input);
-exec("chmod 777 $executable"); 
+exec("chmod -R 777 $executable");
+exec("chmod -R 777 $code_file");
+exec("chmod -R 777 $input_file"); 
 exec("chmod 777 $error_file");	
 shell_exec($cmd_error);
 $error=file_get_contents($error_file);
@@ -51,17 +53,17 @@ else if(!strpos($error,"error"))
 else
 {
 	echo "<pre>$error</pre>";
-	$check=1;
+	$flag=1;
 }
 $endTime = microtime(true);
 $time = $endTime - $startTime;
 $time = sprintf('%0.2f', $time);
 echo "<pre>Time taken : $time s</pre>";
-if($check==1)
+if($flag==1)
 {
 	echo "<pre>Compilation Error</pre>";
 }
-else if($check==0 && $time>3)
+else if($flag==0 && $time>3)
 {
 	echo "<pre>Time Limit Exceeded</pre>";
 }
@@ -69,7 +71,7 @@ else if(trim($output)=="")
 {
 	echo "<pre>Wrong Answer</pre>";
 }
-else if($check==0)
+else if($flag==0)
 {
 	echo "<pre>Success</pre>";
 }
