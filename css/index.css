@@ -1,0 +1,21 @@
+textarea
+{
+  resize: both;
+  overflow: auto;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+navbar-nav
+{
+  flex-direction: row;
+}
+    
+.nav-link
+{
+  padding-right: .5rem !important;
+  padding-left: .5rem !important;
+}
+    

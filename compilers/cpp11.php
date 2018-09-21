@@ -32,11 +32,11 @@ if(trim($error)=="")
 		$out=$out." < ".$input_file;
 		$output=shell_exec($out);
 	}
-	echo "<pre>$output</pre>";
+	echo "<div class=\"alert alert-secondary\" role=\"alert\"><center>Output</center>\n$output</div>";
 }
 else if(!strpos($error,"error"))
 {
-	echo "<pre>$error</pre>";
+	echo "<div class=\"alert alert-warning\" role=\"alert\"><center>Error</center>\n$error</div>";
 	if(trim($input)=="")
 	{
 		$output=shell_exec($out);
@@ -46,32 +46,32 @@ else if(!strpos($error,"error"))
 		$out=$out." < ".$input_file;
 		$output=shell_exec($out);
 	}
-	echo "<pre>$output</pre>";
+	echo "<div class=\"alert alert-secondary\" role=\"alert\"><center>Output</center>\n$output</div>";
 }
 else
 {
-	echo "<pre>$error</pre>";
+	echo "<div class=\"alert alert-warning\" role=\"alert\"><center>Error</center>\n$error</div>";
 	$flag=1;
 }
 $endTime = microtime(true);
 $time = $endTime - $startTime;
 $time = sprintf('%0.2f', $time);
-echo "<pre>Time taken : $time s</pre>";
+echo "<div class=\"alert alert-info\" role=\"alert\">Time taken : $time s</div>";
 if($flag==1)
 {
-	echo "<pre>Compilation Error</pre>";
+	echo "<div class=\"alert alert-danger\" role=\"alert\">Compilation Error</div>";
 }
 else if($flag==0 && $time>3)
 {
-	echo "<pre>Time Limit Exceeded</pre>";
+	echo "<div class=\"alert alert-danger\" role=\"alert\">Time Limit Exceeded</div>";
 }
 else if(trim($output)=="")
 {
-	echo "<pre>Wrong Answer</pre>";
+	echo "<div class=\"alert alert-danger\" role=\"alert\">Wrong Answer</div>";
 }
 else if($flag==0)
 {
-	echo "<pre>Success</pre>";
+	echo "<div class=\"alert alert-danger\" role=\"alert\">Success</div>";
 }
 exec("rm $code_file");
 exec("rm *.o");
