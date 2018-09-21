@@ -36,11 +36,11 @@ if (trim($error)=="")
 		$out=$out." < ".$input_file;
 		$output=shell_exec($out);
 	}
-	echo "<div class=\"alert alert-secondary\" role=\"alert\"><center>Output</center>\n$output</div>";
+	echo "<div class=\"alert alert-secondary\" role=\"alert\"><center>Output</center>\n<pre>$output</pre></div>";
 }
 else if(!strpos($error,"error"))
 {
-	echo "<div class=\"alert alert-warning\" role=\"alert\"><center>Error</center>\n$error</div>";
+	echo "<div class=\"alert alert-warning\" role=\"alert\"><center>Error</center>\n<pre>$error</pre></div>";
 	if(trim($input)=="")
 	{
 		$output=shell_exec($out);
@@ -50,11 +50,11 @@ else if(!strpos($error,"error"))
 		$out=$out."<".$input_file;
 		$output=shell_exec($out);
 	}
-	echo "<div class=\"alert alert-secondary\" role=\"alert\"><center>Output</center>\n$output</div>";
+	echo "<div class=\"alert alert-secondary\" role=\"alert\"><center>Output</center>\n<pre>$output</pre></div>";
 }
 else
 {
-	echo "<div class=\"alert alert-warning\" role=\"alert\"><center>Error</center>\n$error</div>";
+	echo "<div class=\"alert alert-warning\" role=\"alert\"><center>Error</center>\n<pre>$error</pre></div>";
 }
 $endTime=microtime(true);
 $sec=$endTime-$startTime;
@@ -66,7 +66,7 @@ if($sec>5)
 }
 else
 {
-	echo "<div class=\"alert alert-danger\" role=\"alert\">Success</div>";
+	echo "<div class=\"alert alert-success\" role=\"alert\">Success</div>";
 }
 exec("rm $code_file");
 exec("rm *.java");
