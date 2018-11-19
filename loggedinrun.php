@@ -1,3 +1,34 @@
+<?php
+
+	include("lang.php");
+
+    session_start();
+
+    if (array_key_exists("id", $_COOKIE)) {
+        
+        $_SESSION['id'] = $_COOKIE['id'];
+        
+    }
+
+    if (array_key_exists("id", $_SESSION)) {
+        
+       	include("connection.php");
+
+       	$query = "SELECT email FROM `users` WHERE id = ".mysqli_real_escape_string($link, $_SESSION['id'])." LIMIT 1";
+      	$row = mysqli_fetch_array(mysqli_query($link, $query));
+
+      	$sql = "INSERT INTO `$row[0]` (`code`, `lang`) VALUES ('".mysqli_real_escape_string($link, $_POST['code'])."', '".mysqli_real_escape_string($link, $lan)."')";
+
+      	$result = mysqli_query($link, $sql) or die("Error:Could not Update user code history.");
+        
+    } else {
+        
+        header("Location: login.php");
+        
+    }
+
+
+?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -21,16 +52,19 @@
   </head>
   <body>
 		<nav class="navbar navbar-expand-lg navbar-dark bg-warning rounded">
-		  <a class="navbar-brand" href="index.php">
+		  <a class="navbar-brand" href="loggedinpage.php">
 		    <img src="img/c.png" width="30" height="30" class="d-inline-block align-top" alt="">
 		    Compile It!
 		  </a>
 		  <ul class="navbar-nav ml-auto">
 		    <li class="nav-item">
-		      <a class="nav-link" href="index.php">New Code</a>
+		      <a class="nav-link" href="loggedinpage.php">New Code</a>
 		    </li>
 		    <li class="nav-item">
-		      <a class="nav-link" href="login.php">Login</a>
+		      <a class="nav-link" href="recent.php">Recent Code</a>
+		    </li>
+		    <li class="nav-item">
+		    	<a class="nav-link" href="login.php?logout=1">Logout</a>
 		    </li>
 		  </ul>
 		</nav>

@@ -1,3 +1,25 @@
+<?php
+
+    session_start();
+
+    if (array_key_exists("id", $_COOKIE)) {
+        
+        $_SESSION['id'] = $_COOKIE['id'];
+        
+    }
+
+    if (array_key_exists("id", $_SESSION)) {
+        
+       	include("connection.php");
+        
+    } else {
+        
+        header("Location: login.php");
+        
+    }
+
+
+?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -21,22 +43,26 @@
   </head>
   <body>
 		<nav class="navbar navbar-expand-lg navbar-dark bg-warning rounded">
-		  <a class="navbar-brand" href="index.php">
+		  <a class="navbar-brand" href="loggedinpage.php">
 		    <img src="img/c.png" width="30" height="30" class="d-inline-block align-top" alt="">
 		    Compile It!
 		  </a>
 		  <ul class="navbar-nav ml-auto">
 		    <li class="nav-item">
-		      <a class="nav-link" href="index.php">New Code</a>
+		      <a class="nav-link" href="loggedinpage.php">New Code</a>
 		    </li>
 		    <li class="nav-item">
-		      <a class="nav-link" href="login.php">Login</a>
+		      <a class="nav-link" href="recent.php">Recent Code</a>
+		    </li>
+		    <li class="nav-item">
+		    	<!--<a href ='login.php?logout=1'>-->
+		      <a class="nav-link" href="login.php?logout=1">Logout</a>
 		    </li>
 		  </ul>
 		</nav>
 		</p>
 		<div class="container">
-			<form action="run.php" method="post">
+			<form action="loggedinrun.php" method="post">
 				<center>
 						<i class="fas fa-code"> Enter your Code here</i>
 						</p>
