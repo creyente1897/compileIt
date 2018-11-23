@@ -1,6 +1,11 @@
 <?php
+    $dbhost = getenv("MYSQL_SERVICE_HOST");
+    $dbport = getenv("MYSQL_SERVICE_PORT");
+    $dbuser = getenv("databaseuser");
+    $dbpwd = getenv("databasepassword");
+    $dbname = getenv("databasename");
 
-    $link = mysqli_connect("mysql://mysql:3306/", "phpmyadmin", "ayush@1803", "phpmyadmin");
+    $link = mysqli_connect($dbhost, $dbuser, $dbpwd, $dbname);
         
         if (mysqli_connect_error()) {
             
