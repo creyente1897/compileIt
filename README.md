@@ -2,6 +2,8 @@
 
 This is an online compiler that can compile and run C/C++ and Java program.One can also login and see his/her recent history and can also upload his/her code  and input file.
 
+*Note: Some features of the project can't be used on the demo link because I have a free account on open shift so I don't have enough pods.*
+
 ## Language
 
 * C
