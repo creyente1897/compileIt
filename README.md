@@ -45,6 +45,6 @@ sudo apt-get update
 sudo apt install openjdk-8-jre
 ```
 
-If you do not have lamp installed on your linux machine pleae do so in order to run the project locally.
+If you do not have lamp installed on your linux machine please do so in order to run the project locally.
 
 - [LAMP INSTALLATION GUIDE FOR UBUNTU](https://www.digitalocean.com/community/tutorials/how-to-install-linux-apache-mysql-php-lamp-stack-ubuntu-18-04)
